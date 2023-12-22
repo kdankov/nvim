@@ -16,6 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.o.termguicolors = true
 
 require('lazy').setup({
+
   {
     "nvim-neorg/neorg",
     build = ":Neorg sync-parsers",
@@ -45,26 +46,29 @@ require('lazy').setup({
       }
     end,
   },
+
   'folke/zen-mode.nvim',
-  'David-Kunz/gen.nvim',
-  'tpope/vim-dadbod',
-  'tpope/vim-obsession',
-  'kristijanhusak/vim-dadbod-ui',
-  'kristijanhusak/vim-dadbod-completion',
+  -- 'David-Kunz/gen.nvim',
+  -- 'tpope/vim-dadbod',
+  --'tpope/vim-obsession',
+  -- 'kristijanhusak/vim-dadbod-ui',
+  -- 'kristijanhusak/vim-dadbod-completion',
 
   -- Tree
-  {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    requires = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("nvim-tree").setup {}
-    end,
-  },
+  -- {
+  --   "nvim-tree/nvim-tree.lua",
+  --   version = "*",
+  --   lazy = false,
+  --   requires = {
+  --     "nvim-tree/nvim-web-devicons",
+  --   },
+  --   config = function()
+  --     require("nvim-tree").setup {}
+  --   end,
+  -- },
+
   -- Database
+ 
   {
     "tpope/vim-dadbod",
     opt = true,
@@ -77,25 +81,29 @@ require('lazy').setup({
     end,
   },
 
+  -- Git
   'ThePrimeagen/git-worktree.nvim',
+
   'tpope/vim-surround',
-  'xiyaowong/nvim-transparent',
-  { 
-    'numToStr/FTerm.nvim',
-    config = function()
-    local map = vim.api.nvim_set_keymap
-    local opts = { noremap = true, silent = true }
-    require 'FTerm'.setup({
-      blend = 5,
-      dimensions = {
-        height = 0.90,
-        width = 0.90,
-        x = 0.5,
-        y = 0.5
-      }
-    })
-    end
-  },
+
+  -- 'xiyaowong/nvim-transparent',
+
+  -- { 
+  --   'numToStr/FTerm.nvim',
+  --   config = function()
+  --   local map = vim.api.nvim_set_keymap
+  --   local opts = { noremap = true, silent = true }
+  --   require 'FTerm'.setup({
+  --     blend = 5,
+  --     dimensions = {
+  --       height = 0.90,
+  --       width = 0.90,
+  --       x = 0.5,
+  --       y = 0.5
+  --     }
+  --   })
+  --   end
+  -- },
 
   {
     'rmagatti/goto-preview',
@@ -158,46 +166,47 @@ require('lazy').setup({
     end
   },   
 
-  {
-    "folke/noice.nvim",
-    config = function()
-      require("noice").setup({
-        -- add any options here
-        routes = {
-          {
-            filter = {
-              event = 'msg_show',
-              any = {
-                { find = '%d+L, %d+B' },
-                { find = '; after #%d+' },
-                { find = '; before #%d+' },
-                { find = '%d fewer lines' },
-                { find = '%d more lines' },
-              },
-            },
-            opts = { skip = true },
-          }
-        },
-      })
-    end,
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
-    }
-  },
+  -- {
+  --   "folke/noice.nvim",
+  --   config = function()
+  --     require("noice").setup({
+  --       -- add any options here
+  --       routes = {
+  --         {
+  --           filter = {
+  --             event = 'msg_show',
+  --             any = {
+  --               { find = '%d+L, %d+B' },
+  --               { find = '; after #%d+' },
+  --               { find = '; before #%d+' },
+  --               { find = '%d fewer lines' },
+  --               { find = '%d more lines' },
+  --             },
+  --           },
+  --           opts = { skip = true },
+  --         }
+  --       },
+  --       presets = {
+  --         bottom_search = true, -- use a classic bottom cmdline for search
+  --         command_palette = false, -- position the cmdline and popupmenu together
+  --       },
+  --     })
+  --   end,
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --     "rcarriga/nvim-notify",
+  --   }
+  -- },
 
   'ray-x/go.nvim',
   'ray-x/guihua.lua',
+
   { "catppuccin/nvim", as = "catppuccin" },
+
   {
     "windwp/nvim-autopairs",
       config = function() require("nvim-autopairs").setup {} end
   },
-
 
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -213,7 +222,11 @@ require('lazy').setup({
 
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip'
+    },
   },
 
   { -- Highlight, edit, and navigate code
@@ -226,7 +239,13 @@ require('lazy').setup({
     }
   },
 
-  { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap"} },
+  { 
+    "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "mfussenegger/nvim-dap"
+    }
+  },
+
   'theHamsta/nvim-dap-virtual-text',
   'leoluz/nvim-dap-go',
 
@@ -235,32 +254,34 @@ require('lazy').setup({
   'tpope/vim-fugitive',
   'lewis6991/gitsigns.nvim',
 
-  'navarasu/onedark.nvim', -- Theme inspired by Atom
   'nvim-lualine/lualine.nvim', -- Fancier statusline
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} }, -- Add indentation guides even on blank lines
+
+  { 
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl", opts = {}
+  },
+
   'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines 
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-  -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
-  'nvim-telescope/telescope-symbols.nvim',
-  'ThePrimeagen/harpoon',
 
-  -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', cond = vim.fn.executable 'make' == 1 },
-  {
-    "folke/twilight.nvim",
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
+  -- Fuzzy Finder (files, lsp, etc)
+  { 
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim'
     }
   },
-}
--- {
---   defaults = {
---     lazy = true,
---   }
--- }
-)
+
+  'nvim-telescope/telescope-symbols.nvim',
+
+  'ThePrimeagen/harpoon',
+
+  { 
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make', cond = vim.fn.executable 'make' == 1
+  },
+
+})
 
 
